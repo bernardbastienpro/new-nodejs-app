@@ -1,0 +1,16 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone') {
+            steps {
+                git branch: 'master', url: 'https://github.com/bernardbastienpro/new-nodejs-app'
+            }
+        }
+        stage('Build Docker'){
+            steps {
+                bat 'docker-compose build'
+            }
+        }
+    }
+}
